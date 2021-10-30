@@ -1,0 +1,16 @@
+@startuml
+actor "Менеджер" as owner
+boundary "Система управления салоном" as app
+entity "База данных" as data
+boundary "Соцсети" as site
+actor "Клиент" as trainee
+owner-> app : Внесение записи в журнал
+app-> data : Перенос журнала в БД
+data-> app : Чтение записи
+app-> owner: Подтверждение записи
+owner-> trainee: Прием клиента 
+ -> app: Отзыв
+app-> data : Запись отзыва
+data-> site: Публикация в соцсетях
+site-> trainee: Привлечение клиентов
+@enduml
